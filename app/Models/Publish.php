@@ -43,4 +43,27 @@ class Publish extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function countSignLikes(): int
+    {
+        return $this->signLikes()->count();
+    }
+
+    public function countSignDislikes(): int
+    {
+        return $this->signDislikes()->count();
+    }
+
+    public function signLikes()
+    {
+        return $this->hasMany(Sign::class, 'publish_id')->where('is_like', true);
+    }
+
+    public function signDislikes()
+    {
+        return $this->hasMany(Sign::class, 'publish_id')->where('is_like', false);
+    }
+
+    public function reviews(){
+        return $this->hasMany(Reviews::class,'publish_id');
+    }
 }

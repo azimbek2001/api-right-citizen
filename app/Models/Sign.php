@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reviews extends Model
+class Sign extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'publish_id', 'comment','sign_id'
+        'user_id', 'publish_id', 'is_like'
     ];
-
-    public function sign(){
-        return $this->belongsTo(Sign::class);
-    }
 }

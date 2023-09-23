@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Reputation extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'is_up',
+    ];
+
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -76,4 +76,14 @@ class User extends Authenticatable
     {
         return 'pin';
     }
+
+    public function reputations(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Reputation::class,'user_id');
+    }
+
+    public function publishers()
+    {
+        return $this->hasMany(Publish::class);
+    }
 }

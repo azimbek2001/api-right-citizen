@@ -1,9 +1,9 @@
 <?php
-declare(strict_types=1);
 
 namespace App\Http\Resources\Publish;
 
 use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\ReviewResource;
 use App\Models\Publish;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -11,7 +11,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 /**
  * @mixin Publish
  */
-class PublishResource extends JsonResource
+class PublishResourceReview extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -27,8 +27,8 @@ class PublishResource extends JsonResource
             'category' => CategoryResource::make($this->category),
             'likes' => $this->countSignLikes(),
             'dislikes' => $this->countSignDislikes(),
+            'reviews' => ReviewResource::collection($this->reviews),
         ];
     }
-
 
 }
