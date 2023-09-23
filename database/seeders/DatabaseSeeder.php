@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +13,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $data = [
+            [
+                'title' => [
+                    'ru' => 'Гражданское право',
+                    'ky' => 'text',
+                ],
+            ],
+            [
+                'title' => [
+                    'ru' => 'Здравохранение',
+                    'ky' => 'text',
+                ],
+            ],
+            [
+                'title' => [
+                    'ru' => 'Уголовное право',
+                    'ky' => 'text',
+                ],
+            ],
+        ];
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach ($data as $item) {
+            Category::query()->create($item);
+        }
     }
 }
